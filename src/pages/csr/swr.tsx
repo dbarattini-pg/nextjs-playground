@@ -7,8 +7,6 @@ export default function CsrSwr() {
 
   const { data: posts, error, isLoading } = useSWR("/api/posts", fetcher);
 
-  console.log(isLoading);
-
   if (error) return <p>An error has occurred.</p>;
   if (isLoading) return <p>Loading...</p>;
   if (!posts) return <p>No Posts</p>;
