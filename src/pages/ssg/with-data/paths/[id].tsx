@@ -7,6 +7,9 @@ type SsgWithDataPathsProps = {
 };
 
 export default function SsgWithDataPaths({ post }: SsgWithDataPathsProps) {
+  // used by fallback: true
+  if (!post) return <p>Loading...</p>;
+
   return <Post post={post} />;
 }
 
@@ -29,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     params: { id: post.id.toString() },
   }));
 
-  return { paths, fallback: "blocking" };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
