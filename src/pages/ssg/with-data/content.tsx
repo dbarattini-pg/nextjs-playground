@@ -15,7 +15,7 @@ export default function SsgWithDataContent({ posts }: SsgWithDataContentProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
 

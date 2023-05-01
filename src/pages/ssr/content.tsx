@@ -15,7 +15,7 @@ export default function SsrContent({ posts }: SsrContentProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
 
