@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import React from "react";
 
 type SsrContentProps = {
@@ -9,7 +10,9 @@ export default function SsrContent({ posts }: SsrContentProps) {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
+        <li key={post.id}>
+          <Link href={`/ssr/paths/${post.id}`}>{post.title}</Link>
+        </li>
       ))}
     </ul>
   );

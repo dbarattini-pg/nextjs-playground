@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import React from "react";
 
 type IsrWithDataContentProps = {
@@ -9,7 +10,9 @@ export default function IsrWithDataContent({ posts }: IsrWithDataContentProps) {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
+        <li key={post.id}>
+          <Link href={`/isr/paths/${post.id}`}>{post.title}</Link>
+        </li>
       ))}
     </ul>
   );

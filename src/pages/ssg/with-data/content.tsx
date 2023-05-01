@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import React from "react";
 
 type SsgWithDataContentProps = {
@@ -9,7 +10,9 @@ export default function SsgWithDataContent({ posts }: SsgWithDataContentProps) {
   return (
     <ul>
       {posts.map((post) => (
-        <li key={post.id}>{post.title}</li>
+        <li key={post.id}>
+          <Link href={`/ssg/with-data/paths/${post.id}`}>{post.title}</Link>
+        </li>
       ))}
     </ul>
   );
