@@ -1,0 +1,19 @@
+import Post from "@/components/Post";
+import { GetServerSideProps } from "next";
+import React from "react";
+
+type SsrPathsProps = {
+  post: Post;
+};
+
+export default function SsrPaths({ post }: SsrPathsProps) {
+  return <Post post={post} />;
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { id } = context.params!;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const post = await res.json();
+
+  return { props: { post } };
+};
