@@ -1,11 +1,23 @@
 import posts from "@/data/posts.json";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== "GET") {
-    res.status(405).json({ message: "Method not allowed" });
-    return;
+    return new Response(JSON.stringify({ message: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
-  res.status(200).json(posts);
+  return new Response(JSON.stringify(posts), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
+
+export const config = {
+  runtime: "edge",
+};
