@@ -1,0 +1,9 @@
+.container {
+  border: 0.2rem solid grey;
+  padding: 1rem;
+}
+
+.title {
+  color: #27b6f8;
+  text-align: center;
+}
