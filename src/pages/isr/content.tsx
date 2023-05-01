@@ -16,7 +16,7 @@ export default function IsrWithDataContent({ posts }: IsrWithDataContentProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch(process.env.POSTS_API);
   const posts = await res.json();
 
   return {

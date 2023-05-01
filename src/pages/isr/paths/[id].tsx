@@ -35,9 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
 
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params!.id}`
-  );
+  const res = await fetch(`${process.env.POSTS_API}/${params!.id}`);
   const post = await res.json();
 
   return {

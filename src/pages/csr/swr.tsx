@@ -9,7 +9,7 @@ export default function CsrSwr() {
     data: posts,
     error,
     isLoading,
-  } = useSWR("https://jsonplaceholder.typicode.com/posts", fetcher);
+  } = useSWR(process.env.NEXT_PUBLIC_POSTS_API, fetcher);
 
   console.log(isLoading);
 

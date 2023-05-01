@@ -12,7 +12,7 @@ export default function SsrPaths({ post }: SsrPathsProps) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params!;
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  const res = await fetch(`${process.env.POSTS_API}/${id}`);
   const post = await res.json();
 
   return { props: { post } };

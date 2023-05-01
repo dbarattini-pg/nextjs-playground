@@ -5,7 +5,7 @@ export default function Posts() {
   const [isLoading, setLoading] = useState(true);
 
   const fetchPostData = useCallback(async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const res = await fetch(process.env.NEXT_PUBLIC_POSTS_API);
     const posts = await res.json();
     setPosts(posts);
     setLoading(false);

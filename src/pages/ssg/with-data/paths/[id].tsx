@@ -14,7 +14,7 @@ export default function SsgWithDataPaths({ post }: SsgWithDataPathsProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const res = await fetch(process.env.POSTS_API);
   const posts = await res.json();
 
   // Pre-render all posts at build time
@@ -38,9 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
 
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params!.id}`
-  );
+  const res = await fetch(`${process.env.POSTS_API}/${params!.id}`);
   const post = await res.json();
 
   return {
