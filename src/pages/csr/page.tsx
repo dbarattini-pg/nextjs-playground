@@ -5,7 +5,7 @@ export default function CsrPage() {
   const [isLoading, setLoading] = useState(true);
 
   const fetchPostData = useCallback(async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_POSTS_API);
+    const res = await fetch("/api/posts");
     const posts = await res.json();
     setPosts(posts);
     setLoading(false);

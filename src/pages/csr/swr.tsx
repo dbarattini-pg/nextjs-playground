@@ -5,11 +5,7 @@ export default function CsrSwr() {
   const fetcher: Fetcher<Post[], string> = (url) =>
     fetch(url).then((res) => res.json());
 
-  const {
-    data: posts,
-    error,
-    isLoading,
-  } = useSWR(process.env.NEXT_PUBLIC_POSTS_API, fetcher);
+  const { data: posts, error, isLoading } = useSWR("/api/posts", fetcher);
 
   console.log(isLoading);
 
