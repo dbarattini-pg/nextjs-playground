@@ -14,14 +14,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
 
-  const paths = posts.map((post: Post) => ({
+  // Pre-render all posts at build time
+  // const paths = posts.map((post: Post) => ({
+  //   params: { id: post.id.toString() },
+  // }));
+
+  // return { paths, fallback: false };
+
+  // Pre-render no posts at build time
+  // return { paths: [], fallback: "blocking" };
+
+  // Pre-render only the first 10 posts at build time
+  const paths = posts.slice(0, 10).map((post: Post) => ({
     params: { id: post.id.toString() },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context;
+
   const res = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${params!.id}`
   );
