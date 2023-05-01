@@ -1,0 +1,13 @@
+.container {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: aliceblue;
+}
+
+.title {
+  text-align: center;
+  margin: 0.5rem;
+  color: #27b6f8;
+}
